@@ -1,0 +1,14 @@
+.head {
+  color: black;
+  font-size: 45px;
+  font-weight: bold;
+  margin: 5px;
+  margin-bottom: 15px;
+  color: orangered;
+}
+
+.welMsg{
+  margin: 20px;
+  font-size: 27px;
+  color: crimson;
+}

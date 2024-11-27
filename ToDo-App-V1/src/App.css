@@ -1,0 +1,13 @@
+.table {
+  margin: 20px;
+}
+
+.left {
+  text-align: left;
+  font-weight: bold;
+}
+
+.ppbtn{
+  min-width: 65px;
+}
+
