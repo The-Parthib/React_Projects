@@ -1,7 +1,10 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { MdOutlineAddCircle } from "react-icons/md";
+import { TodoItemContext } from "../store/TodoItemContext";
 
-function AddTodo({ onNewItem }) {
+function AddTodo() {
+  const { addNewItem } = useContext(TodoItemContext);
+
   const todoNameElement = useRef();
   const dueDateElement = useRef();
 
@@ -11,8 +14,8 @@ function AddTodo({ onNewItem }) {
     const dueDate = dueDateElement.current.value;
     todoNameElement.current.value = "";
     dueDateElement.current.value="";
-    console.log(todoItem, dueDate);
-    onNewItem(todoItem, dueDate);
+    // console.log(todoItem, dueDate);
+    addNewItem(todoItem, dueDate);
   };
 
   return (

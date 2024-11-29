@@ -3,36 +3,22 @@ import AddTodo from "./components/AddTodo";
 import TodoItems from "./components/TodoItems";
 import WelcomeMsg from "./components/WelcomeMsg";
 import "./App.css";
-import { useState } from "react";
+import TodoItemsContextProvider, { TodoItemContext } from "./store/TodoItemContext";
+
+;
 
 function App() {
-  const todoItems = [
-  ];
-
-  const [ntodoItems, setTodoItems] = useState([]);
-
-  const handleNewItem = (itemName, itemDueDate) => {
-    const addedItems = [ ...ntodoItems,{name: itemName ,dueDate: itemDueDate }];
-    setTodoItems(addedItems);
-  };
-
-
-
-  const handleDeleteItem = (deletedItem)=> {
-    const filterDelete = ntodoItems.filter(item => item.name != deletedItem);
-    setTodoItems(filterDelete);
-    
-  }
 
   return (
     <>
-      <center className="todo-container">
-        <AppName />
-
-        <AddTodo onNewItem={handleNewItem} />
-        {ntodoItems.length === 0 && <WelcomeMsg />}
-        <TodoItems onDeleteClick={handleDeleteItem} todoItems={ntodoItems} />
-      </center>
+      <TodoItemsContextProvider>
+        <center className="todo-container">
+          <AppName />
+          <AddTodo />
+          <WelcomeMsg />
+          <TodoItems />
+        </center>
+      </TodoItemsContextProvider>
     </>
   );
 }

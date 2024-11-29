@@ -1,11 +1,15 @@
+import { useContext } from "react";
+import { TodoItemContext } from "../store/TodoItemContext";
 import TodoItem from "./TodoItem";
 
-const TodoItems = ({ todoItems, onDeleteClick }) => {
+const TodoItems = () => {
+
+  const { todoItems } = useContext(TodoItemContext);
+  console.log(todoItems);
   return (
     <>
       {todoItems.map((item) => (
         <TodoItem
-          onDeleteClick={onDeleteClick}
           key={item}
           task={item.name}
           date={item.dueDate}
