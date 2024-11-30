@@ -1,0 +1,33 @@
+.app-container{
+    display: flex;
+}
+.content{
+    width: 100%;
+}
+.sidebar{
+    min-height: 100vh;
+}
+
+.post-card{
+    width: 18rem;
+    margin: 43px 81px;
+    border: 2px solid blue;
+    color: maroon;
+    background-color: #deffff;
+    display: flex;
+}
+.hash{
+    margin: 2px;
+}
+.reac{
+    max-width: 20rem;
+    
+}
+.create-post{
+    border: 3px solid blue;
+    padding: 9px;
+    border-radius: 11px;
+    width: 55%;
+    margin: 50px;
+    margin-left: 20%;
+}
