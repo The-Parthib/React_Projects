@@ -1,4 +1,7 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+// ... rest of your component code
 
 const DEFAULT_POST_LIST = [
   {
@@ -22,7 +25,6 @@ const DEFAULT_POST_LIST = [
 export const PostList = createContext({
   postList: [],
   addPost: () => {},
-  addInitialPosts: () => {},
   deletePost: () => {},
 });
 
@@ -31,33 +33,24 @@ const postListReducer = (currPostList, action) => {
   if (action.type === "DELETE_POST") {
     newPostList = currPostList.filter(
       (post) => post.id !== action.payload.postId
-    )
+    );
   } else if (action.type === "ADD_POST") {
     newPostList = [action.payload, ...currPostList];
   } else if (action.type === "ADD_INITIAL_POSTS") {
     newPostList = action.payload.posts;
-    
   }
   return newPostList;
 };
 
 const PostListProvider = ({ children }) => {
-  const [postList, dispatchPostList] = useReducer(
-    postListReducer,
-    []
-  );
+  const [postList, dispatchPostList] = useReducer(postListReducer, []);
+  const navigate = useNavigate();
 
-  const addPost = (userId, title, reactions, tags, body) => {
+  const addPost = (post) => {
+    //userId, title, reactions, tags, body
     dispatchPostList({
       type: "ADD_POST",
-      payload: {
-        id: Date.now(),
-        title: title,
-        body: body,
-        reactions: reactions,
-        userId: userId,
-        tags: tags,
-      },
+      payload: post,
     });
   };
 
@@ -84,7 +77,6 @@ const PostListProvider = ({ children }) => {
       value={{
         postList: postList,
         addPost: addPost,
-        addInitialPosts: addInitialPosts,
         deletePost: deletePost,
       }}
     >
