@@ -25,7 +25,7 @@ function Post({ post }) {
         ))}
       </div>
       <div className="alert alert-success reac" role="alert">
-        Your post has reached by {post.reactions} peoples
+        Your post has reached by {post.reactions.likes} peoples
       </div>
     </div>
   );
